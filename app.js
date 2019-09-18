@@ -1,14 +1,19 @@
+'use strict';
+
 const app     = require('express')();
 const http    = require('http').Server(app);
 const io      = require('socket.io')(http);
 const express = require('express');
+const admin   = express();
+const api     = express();
 const router  = express.Router();
 
 const path = __dirname + '/views/';
+const admin_path = __dirname + '/views/admin/';
 const port = 8080;
 
 router.use(function (req,res,next) {
-  console.log('/' + req.method);
+  // console.log('/' + req.method);
   next();
 });
 
@@ -16,8 +21,21 @@ router.get('/', function(req,res){
   res.sendFile(path + 'index.html');
 });
 
+admin.get('/', function(req, res) {
+  res.sendFile(admin_path + 'index.html');
+});
+
+api.get('/', function(req, res) {
+  res.json({status: "It's work!"});
+});
+
 app.use(express.static(path));
 app.use('/', router);
+app.use('/admin', admin);
+app.use('/api', api);
+
+// require route api
+require('./api/routes/users.js')(api);
 
 const removeItem = function (object, key, value) {
     if (value == undefined)
