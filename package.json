@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-docker-demo",
+  "version": "1.0.0",
+  "description": "nodejs docker demo",
+  "author": "Mai Dong Giang <giangmd93@gmail.com>",
+  "license": "MIT",
+  "main": "app.js",
+  "keywords": [
+    "nodejs",
+    "bootstrap"
+  ],
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}
