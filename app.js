@@ -58,7 +58,8 @@ io.on('connection', function(socket) {
   // event chat
   socket.on('chat-message', function(data) {
     // send emit chat-message to client site
-    io.emit('chat-message', data);
+    io.to(data.sender).emit('chat-message', data); //emit to sender
+    io.to(data.reciever).emit('chat-message', data); //emit to reciever
   });
 
   // socket disconect
