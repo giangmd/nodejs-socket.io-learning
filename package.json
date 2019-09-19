@@ -5,11 +5,16 @@
   "author": "Mai Dong Giang <giangmd93@gmail.com>",
   "license": "MIT",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [
     "nodejs",
     "bootstrap"
   ],
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.16.4",
     "socket.io": "^2.2.0"
   }

@@ -12,6 +12,12 @@ const path = __dirname + '/views/';
 const admin_path = __dirname + '/views/admin/';
 const port = 8080;
 
+const bodyParser = require('body-parser')
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+
 router.use(function (req,res,next) {
   // console.log('/' + req.method);
   next();
@@ -34,8 +40,9 @@ app.use('/', router);
 app.use('/admin', admin);
 app.use('/api', api);
 
-// require route api
+// require routes api
 require('./api/routes/users.js')(api);
+require('./api/routes/posts.js')(api);
 
 const removeItem = function (object, key, value) {
     if (value == undefined)

@@ -7,5 +7,5 @@ module.exports = function(api) {
         .get(userController.index)
         .post(userController.store)
 
-    
+
 }

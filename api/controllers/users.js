@@ -10,5 +10,6 @@ exports.index = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    res.json({message: "Users store function"})
+    // console.log(req.body);
+    res.json(req.body)
 }
