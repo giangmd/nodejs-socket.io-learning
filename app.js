@@ -2,6 +2,7 @@
 
 const app     = require('express')();
 const http    = require('http').Server(app);
+const https   = require('https');
 const io      = require('socket.io')(http);
 const express = require('express');
 const admin   = express();
@@ -43,6 +44,43 @@ app.use('/api', api);
 // require routes api
 require('./api/routes/users.js')(api);
 require('./api/routes/posts.js')(api);
+
+// Get data from Rest API
+app.use('/typicode/posts', (req, ressponse) => {
+  const uri = "https://my-json-server.typicode.com/typicode/demo/posts"
+
+  https.get(uri, (res) => {
+
+    var body = '';
+    res.on('data', function(chunk) {
+      body += chunk;
+    });
+    res.on('end', function() {
+      ressponse.json(body)
+    });
+
+  }).on('error', (err) => {
+    console.log('ERROR: ' + err.message);
+  })
+})
+
+app.use('/typicode/comments', (req, ressponse) => {
+  const uri = "https://my-json-server.typicode.com/typicode/demo/comments"
+
+  https.get(uri, (res) => {
+
+    var body = '';
+    res.on('data', function(chunk) {
+      body += chunk;
+    });
+    res.on('end', function() {
+      ressponse.json(body)
+    });
+
+  }).on('error', (err) => {
+    console.log('ERROR: ' + err.message);
+  })
+})
 
 const removeItem = function (object, key, value) {
     if (value == undefined)

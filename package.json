@@ -7,7 +7,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "nodejs",
@@ -16,6 +16,15 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.16.4",
+    "jest": "^24.9.0",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1",
+    "mocha-sinon": "^2.1.0",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
   }
 }
