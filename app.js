@@ -44,6 +44,7 @@ app.use('/api', api);
 // require routes api
 require('./api/routes/users.js')(api);
 require('./api/routes/posts.js')(api);
+require('./api/routes/subvn.js')(api);
 
 // Get data from Rest API
 app.use('/typicode/posts', (req, ressponse) => {
